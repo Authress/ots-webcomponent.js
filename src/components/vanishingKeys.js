@@ -116,8 +116,13 @@ async function handleClick(event) {
   }
 
   const secret = this.shadowRoot.getElementById('secret').value;
-  const passphrase = this.shadowRoot.getElementById('passphrase').value;
-  const includePassphrase = this.shadowRoot.getElementById('includePassphrase').checked || !passphrase;
+  const specifiedPassphrase = this.shadowRoot.getElementById('passphrase').value;
+  const includePassphrase = this.shadowRoot.getElementById('includePassphrase').checked || !specifiedPassphrase;
+
+  // This is not base32 but instead base32hex: https://datatracker.ietf.org/doc/html/rfc4648#section-7
+  const base32hexMap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ23456789';
+  const fallbackPassphrase = [...(window.crypto || window.msCrypto).getRandomValues(new Uint8Array(24))].map(val => base32hexMap[val % 32]).join('');
+  const passphrase = specifiedPassphrase || fallbackPassphrase;
 
   const result = await encryptionManager.generateLink(secret, passphrase, includePassphrase, lifetime);
   if (!result) {
