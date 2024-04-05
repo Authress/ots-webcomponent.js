@@ -6,7 +6,7 @@ import QRCode from 'qrcode';
 import Styles from '../../bootstrap';
 
 const logger = console;
-const loginClient = new LoginClient({ applicationId: '', authressLoginHostUrl: window.location.origin }, logger);
+const loginClient = new LoginClient({ applicationId: 'app_authress-mfa-devices', authressLoginHostUrl: window.location.origin }, logger);
 
 const states = {
   LOADING: 'LOADING',
