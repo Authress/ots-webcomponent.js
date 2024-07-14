@@ -412,7 +412,7 @@ export default class VanishingKeys extends LitElement {
 
               <div>
                 <h4 class="title">Privacy Options:</h4>
-                <div class="input-group">
+                <div class="input-group fs-exclude" data-hj-suppress data-sl="mask">
                   <span class="input-group-text" id="passphrase-label">Passphrase</span>
                   <input id="passphrase" type="text" class="form-control fs-exclude" data-hj-suppress data-sl="mask" autocomplete="off" placeholder="A difficult to guess passphrase" aria-label="Passphrase" aria-describedby="passphrase-label">
                 </div>
@@ -547,7 +547,7 @@ export default class VanishingKeys extends LitElement {
             <form @submit="${(e) => { decodeSecret.call(this, e); }}">
               <div>
                 <h4 class="title">Enter Passphrase:</h4>
-                <div class="input-group">
+                <div class="input-group fs-exclude" data-hj-suppress data-sl="mask">
                   <span class="input-group-text" id="passphrase-label">Passphrase</span>
                   ${this.decryptedSecret
     // eslint-disable-next-line indent
