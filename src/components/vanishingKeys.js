@@ -403,7 +403,7 @@ export default class VanishingKeys extends LitElement {
             <br>
             <form @submit="${(e) => { handleClick.call(this, e); }}">
               <h4 class="title">Secret:</h4>  
-              <div class="text-input fs-exclude" data-hj-suppress data-sl="mask">
+              <div class="text-input fs-exclude ph-no-capture" data-hj-suppress data-sl="mask">
                 <textarea id="secret" maxlength="10240" style="width: 100%; border-radius: 5px; padding: 0.5rem;" rows="4" name="secret" autocomplete="off"
                   placeholder="Secret content goes here..."></textarea>
               </div>
@@ -412,9 +412,9 @@ export default class VanishingKeys extends LitElement {
 
               <div>
                 <h4 class="title">Privacy Options:</h4>
-                <div class="input-group fs-exclude" data-hj-suppress data-sl="mask">
+                <div class="input-group fs-exclude ph-no-capture" data-hj-suppress data-sl="mask">
                   <span class="input-group-text" id="passphrase-label">Passphrase</span>
-                  <input id="passphrase" type="text" class="form-control fs-exclude" data-hj-suppress data-sl="mask" autocomplete="off" placeholder="A difficult to guess passphrase" aria-label="Passphrase" aria-describedby="passphrase-label">
+                  <input id="passphrase" type="text" class="form-control fs-exclude ph-no-capture" data-hj-suppress data-sl="mask" autocomplete="off" placeholder="A difficult to guess passphrase" aria-label="Passphrase" aria-describedby="passphrase-label">
                 </div>
                 <div class="mt-1"><small>The passphrase is used to encrypt the secret. The secret is encrypted on this page and never stored.</small></div>
 
@@ -505,7 +505,7 @@ export default class VanishingKeys extends LitElement {
               <h4 class="title">Share this link:</h4>
               <div class="input-group mb-3" style="cursor: pointer;" @click='${(e) => { copyToClipboard.call(this, this.shareUrl, e); }}'>
                 <input style="cursor: pointer;"
-                  disabled type="text" class="form-control text-input fs-exclude" data-hj-suppress data-sl="mask" aria-label="Secret share link" aria-describedby="secret-share-link" value="${this.shareUrl}">
+                  disabled type="text" class="form-control text-input fs-exclude ph-no-capture" data-hj-suppress data-sl="mask" aria-label="Secret share link" aria-describedby="secret-share-link" value="${this.shareUrl}">
                 <span class="input-group-text" id="secret-share-link">
                   <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 8V7C10 6.05719 10 5.58579 10.2929 5.29289C10.5858 5 11.0572 5 12 5H17C17.9428 5 18.4142 5 18.7071 5.29289C19 5.58579 19 6.05719 19 7V12C19 12.9428 19 13.4142 18.7071 13.7071C18.4142 14 17.9428 14 17 14H16M7 19H12C12.9428 19 13.4142 19 13.7071 18.7071C14 18.4142 14 17.9428 14 17V12C14 11.0572 14 10.5858 13.7071 10.2929C13.4142 10 12.9428 10 12 10H7C6.05719 10 5.58579 10 5.29289 10.2929C5 10.5858 5 11.0572 5 12V17C5 17.9428 5 18.4142 5.29289 18.7071C5.58579 19 6.05719 19 7 19Z" stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
@@ -547,14 +547,14 @@ export default class VanishingKeys extends LitElement {
             <form @submit="${(e) => { decodeSecret.call(this, e); }}">
               <div>
                 <h4 class="title">Enter Passphrase:</h4>
-                <div class="input-group fs-exclude" data-hj-suppress data-sl="mask">
+                <div class="input-group fs-exclude ph-no-capture" data-hj-suppress data-sl="mask">
                   <span class="input-group-text" id="passphrase-label">Passphrase</span>
                   ${this.decryptedSecret
     // eslint-disable-next-line indent
-                  ? html`<input id="passphrase" type="text" class="form-control fs-exclude" data-hj-suppress data-sl="mask" autocomplete="off" disabled value=${[...Array(32)].join('•')}>`
+                  ? html`<input id="passphrase" type="text" class="form-control fs-exclude ph-no-capture" data-hj-suppress data-sl="mask" autocomplete="off" disabled value=${[...Array(32)].join('•')}>`
     // eslint-disable-next-line indent
                   : html`
-                  <input id="passphrase" type="text" class="form-control fs-exclude" data-hj-suppress data-sl="mask" autocomplete="off" placeholder="Enter the passphrase for this secret" aria-label="Passphrase" aria-describedby="passphrase-label">
+                  <input id="passphrase" type="text" class="form-control fs-exclude ph-no-capture" data-hj-suppress data-sl="mask" autocomplete="off" placeholder="Enter the passphrase for this secret" aria-label="Passphrase" aria-describedby="passphrase-label">
                   <button class="btn btn-outline-secondary" type="submit">Decode</button>`}
                 </div>
                 <div class="mt-1"><small>The passphrase is used to decrypt the secret.</small></div>
@@ -573,7 +573,7 @@ export default class VanishingKeys extends LitElement {
               : (this.decryptedSecret === 'NOT_FOUND'
       ? html`<small class="text-danger">This secret is no longer available. It may have expired or has already been used.<small>`
       : html`
-              <div class="input-group mb-3 fs-exclude" data-hj-suppress data-sl="mask" style="cursor: pointer;" @click='${(e) => { copyToClipboard.call(this, this.decryptedSecret, e); }}'>
+              <div class="input-group mb-3 fs-exclude ph-no-capture" data-hj-suppress data-sl="mask" style="cursor: pointer;" @click='${(e) => { copyToClipboard.call(this, this.decryptedSecret, e); }}'>
                 <textarea id="secret" class="form-control" disabled maxlength="10240" style="cursor: pointer; border-radius: 5px; padding: 0.5rem;" rows="4" name="secret" autocomplete="off"
                 >${this.decryptedSecret}</textarea>
                 <span class="input-group-text" id="secret-share-link" style="cursor: pointer">
